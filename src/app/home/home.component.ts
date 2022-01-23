@@ -22,20 +22,24 @@ export class HomeComponent implements OnInit {
   
   }
 
+  goToPage():void{
+    this.router.navigate(['/registered']);
+  }
+
   saveRegister(){
-    this.registerService.createRegister(this.register).subscribe(data => {
+    this.registerService.createRegister(this.register).subscribe(data => {    
       console.log(data)
     },
     error => console.log(error));
   }
 
-    goToPage():void{
-    this.router.navigate(['/registered']);
-  }
-
   onSubmit(){
-    console.log(this.register)
-    this.saveRegister()
+    if(this.register.name != null && this.register.email != null && this.register.phone != null){
+      console.log(this.register)
+      this.saveRegister()
+      this.goToPage();
+    }
+    return 
   }
 
 

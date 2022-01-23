@@ -10,11 +10,7 @@ export class RegisterService {
 
   private baseUrl = "http://localhost:8080/register"
 
-  constructor(private http: HttpClient) { }
-
-  getRegisters(): Observable<Register[]>{
-    return this.http.get<Register[]>(`${this.baseUrl}`)
-  }
+  constructor(private http: HttpClient) {}
 
   createRegister(register: Register): Observable<Object> {
     return this.http.post(`${this.baseUrl}`, register)
