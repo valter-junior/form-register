@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router'
@@ -26,14 +27,19 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/registered']);
   }
 
+  goToError():void{
+    this.router.navigate(['/error'])
+  }
+
   saveRegister(){
     this.registerService.createRegister(this.register).subscribe(data => { 
       if(data){
         this.goToPage();
-      }   
-      console.log(data)
-    },
-    error => console.log(error));
+      }
+      console.log(data) 
+    }, error => {
+      this.goToError()
+    })
   }
 
   onSubmit(){
@@ -41,11 +47,6 @@ export class HomeComponent implements OnInit {
       console.log(this.register)
       this.saveRegister()     
     }
-    return ("Name, email and phone not is null")
   }
-
-
-
-
 }
 
