@@ -27,19 +27,21 @@ export class HomeComponent implements OnInit {
   }
 
   saveRegister(){
-    this.registerService.createRegister(this.register).subscribe(data => {    
+    this.registerService.createRegister(this.register).subscribe(data => { 
+      if(data){
+        this.goToPage();
+      }   
       console.log(data)
     },
     error => console.log(error));
   }
 
   onSubmit(){
-    if(this.register.name != null && this.register.email != null && this.register.phone != null){
+    if(this.register.name != null && this.register.email != null && this.register.phone != null ){
       console.log(this.register)
-      this.saveRegister()
-      this.goToPage();
+      this.saveRegister()     
     }
-    return 
+    return ("Name, email and phone not is null")
   }
 
 
