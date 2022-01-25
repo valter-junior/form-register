@@ -1,5 +1,6 @@
 # Form-register
 
+Existem duas branches uma possue o backend a outra o frontend
 
 # Rodando o backend
 
